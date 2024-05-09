@@ -30,7 +30,7 @@ cp -f ${ROOT_DIR}/manifest/*.xml .repo/local_manifests/
 echo "============= 同步源码 ============="
 # 判断是否已经同步过，如果同步过则删除本地补丁
 if [ -d "${REDROID_DIR}/vendor" ]; then
-  repo forall -vc "git reset --hard"
+  repo forall -vc "git reset --hard" >/dev/null
 fi
 repo sync -c
 
