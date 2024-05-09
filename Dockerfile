@@ -15,6 +15,9 @@ COPY vendor/intel/proprietary/houdini /src/vendor/intel/proprietary/houdini
 # 设置环境
 ENV DEBIAN_FRONTEND noninteractive
 
+# 设置执行权限
+RUN ["chmod", "+x", "/entry.sh"]
+
 # 添加构件库
 RUN apt-get update \
     && echo "install package for building AOSP" \
