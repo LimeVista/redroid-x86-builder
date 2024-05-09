@@ -16,9 +16,9 @@ echo "初始化源"
 mkdir -p ${REDROID_DIR} && cd ${REDROID_DIR}
 
 # 判断 AOSP 源是否存在
-USE_LFS = " --git-lfs"
+USE_LFS=" --git-lfs"
 if [ -d "${REDROID_DIR}/.repo" ]; then
-  USE_LFS = ""
+  USE_LFS=""
 fi
 
 # 添加源码 https://android.googlesource.com/platform/manifest 
