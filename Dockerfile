@@ -20,10 +20,12 @@ RUN ["chmod", "+x", "/entry.sh"]
 
 # 添加构件库
 RUN apt-get update \
+    && apt-get upgrade -y \
+    && apt-get install -y apt-utils \
     && echo "install package for building AOSP" \
     && apt-get install -y git-core gnupg flex bison build-essential zip curl zlib1g-dev \
         gcc-multilib g++-multilib libc6-dev-i386 libncurses5 lib32ncurses5-dev x11proto-core-dev \
-        libx11-dev lib32z1-dev libgl1-mesa-dev libxml2-utils xsltproc unzip fontconfig \
+        libx11-dev lib32z1-dev libgl1-mesa-dev libxml2-utils xsltproc unzip fontconfig procps \
     && echo "install utils" \
     && apt-get install -y sudo rsync \
     && echo "install packages for build mesa3d or meson related" \
