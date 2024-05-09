@@ -19,6 +19,7 @@ mkdir -p ${REDROID_DIR} && cd ${REDROID_DIR}
 repo init -u https://android.googlesource.com/platform/manifest --git-lfs --depth=1 -b ${ANDROID_VER}
 
 # 添加 redroid 模块
+rm -rf .repo/local_manifests
 git clone https://github.com/remote-android/local_manifests.git .repo/local_manifests -b ${MANIFEST_VER}
 
 # 添加附加模块
@@ -29,6 +30,7 @@ repo sync -c
 
 # 应用 redroid 补丁
 cd ${BUILD_DIR}
+rm -rf ${PATCHS_DIR}
 git clone https://github.com/remote-android/redroid-patches.git ${PATCHS_DIR}
 ${PATCHS_DIR}/apply-patch.sh ${REDROID_DIR}
 
