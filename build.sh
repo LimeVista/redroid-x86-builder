@@ -51,7 +51,7 @@ docker build --build-arg userid=$(id -u) --build-arg groupid=$(id -g) --build-ar
 
 # 执行构建镜像
 echo "============= 开始构建 ============="
-docker run -it --rm --hostname redroid-builder --name redroid-builder -v ${REDROID_DIR}:/src redroid-builder
+docker run -it --rm --hostname redroid-builder --name redroid-builder -v ${REDROID_DIR}:/src redroid-builder --privileged
 
 # 创建 redroid 镜像
 echo "============= 创建镜像 ============="
