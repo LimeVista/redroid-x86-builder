@@ -1,0 +1,6 @@
+[submodule "vendor/google/proprietary/widevine-prebuilt"]
+	path = vendor/google/proprietary/widevine-prebuilt
+	url = https://github.com/supremegamers/vendor_google_proprietary_widevine-prebuilt
+[submodule "vendor/intel/proprietary/houdini"]
+	path = vendor/intel/proprietary/houdini
+	url = https://github.com/supremegamers/vendor_intel_proprietary_houdini.git
