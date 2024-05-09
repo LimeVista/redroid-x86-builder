@@ -45,4 +45,4 @@ ENV HOME=/home/$username \
     PATH=/src/.repo/repo:/src/prebuilts/jdk/jdk8/linux-x86/bin/:$PATH
 
 # 执行构建命令
-ENTRYPOINT chroot --userspec=$(cat /root/username):$(cat /root/username) / /bin/bash -i
+ENTRYPOINT chroot --userspec=$(cat /root/username):$(cat /root/username) / /entry.sh
