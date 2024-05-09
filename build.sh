@@ -48,11 +48,11 @@ cp -f ${ROOT_DIR}/patches/device.mk ${REDROID_DIR}/device/redroid/redroid_x86_64
 
 # 构建用于构建 redroid 的镜像
 echo "============= 准备构建 ============="
+cd ${ROOT_DIR}
 docker build --build-arg userid=$(id -u) --build-arg groupid=$(id -g) --build-arg username=$(id -un) -t redroid-builder .
 
 # 执行构建镜像
 echo "============= 开始构建 ============="
-cd ${ROOT_DIR}
 docker run -it --rm --hostname redroid-builder --name redroid-builder -v ${REDROID_DIR}:/src redroid-builder
 
 # 创建 redroid 镜像
