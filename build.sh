@@ -32,7 +32,7 @@ echo "============= 同步源码 ============="
 if [ -d "${REDROID_DIR}/vendor" ]; then
   repo forall -vc "git reset --hard" >/dev/null
 fi
-repo sync -c
+repo sync -c -j8
 
 # 应用 redroid 补丁
 echo "============= 应用补丁 ============="
