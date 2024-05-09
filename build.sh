@@ -17,7 +17,7 @@ mkdir -p ${REDROID_DIR} && cd ${REDROID_DIR}
 
 # 添加源码 https://android.googlesource.com/platform/manifest 
 # 如果是中国可以使用 https://mirrors.bfsu.edu.cn/git/AOSP/platform/manifest 但请勿将其设置为默认
-repo init -u https://android.googlesource.com/platform/manifest --depth=1 -b ${ANDROID_VER}
+repo init -u https://android.googlesource.com/platform/manifest --git-lfs --depth=1 -b ${ANDROID_VER}
 
 # 添加 redroid 模块
 rm -rf .repo/local_manifests
