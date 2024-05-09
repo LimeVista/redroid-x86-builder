@@ -15,15 +15,9 @@ set -e
 echo "============= 初始化源 ============="
 mkdir -p ${REDROID_DIR} && cd ${REDROID_DIR}
 
-# 判断 AOSP 源是否存在
-USE_LFS=" --git-lfs"
-if [ -d "${REDROID_DIR}/.repo" ]; then
-  USE_LFS=""
-fi
-
 # 添加源码 https://android.googlesource.com/platform/manifest 
 # 如果是中国可以使用 https://mirrors.bfsu.edu.cn/git/AOSP/platform/manifest 但请勿将其设置为默认
-repo init -u https://android.googlesource.com/platform/manifest${USE_LFS} --depth=1 -b ${ANDROID_VER}
+repo init -u https://android.googlesource.com/platform/manifest --depth=1 -b ${ANDROID_VER}
 
 # 添加 redroid 模块
 rm -rf .repo/local_manifests
@@ -34,6 +28,10 @@ cp -f ${ROOT_DIR}/manifest/*.xml .repo/local_manifests/
 
 # 同步代码
 echo "============= 同步源码 ============="
+# 判断是否已经同步过，如果同步过则删除本地补丁
+if [ -d "${REDROID_DIR}/vendor" ]; then
+  repo forall -vc "git reset --hard"
+fi
 repo sync -c
 
 # 应用 redroid 补丁
