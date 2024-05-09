@@ -15,4 +15,4 @@ cd /src
 lunch redroid_x86_64-userdebug
 
 # 开始构建
-m -j8
+m
