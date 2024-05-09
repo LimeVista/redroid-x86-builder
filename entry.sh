@@ -3,7 +3,7 @@
 set -e
 
 # 清理构建目录
-rm -rf /src/out/target/product/redroid_x86_64
+rm -rf /src/out
 
 # 原目录
 cd /src
