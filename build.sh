@@ -11,6 +11,12 @@ PATCHS_DIR="${BUILD_DIR}/patches"
 # 遇到错误立即终止
 set -e
 
+while getopts 'c' OPT; do
+    case $OPT in
+        c) ARG_CLEAN="1";;
+    esac
+done
+
 # 跳转到构建目录
 echo "============= 初始化源 ============="
 mkdir -p ${REDROID_DIR} && cd ${REDROID_DIR}
@@ -25,6 +31,12 @@ git clone https://github.com/remote-android/local_manifests.git .repo/local_mani
 
 # 添加附加模块
 cp -f ${ROOT_DIR}/manifest/*.xml .repo/local_manifests/
+
+# 清理之前的构建
+if [ -d "${REDROID_DIR}/out" ] && [ -n "$ARG_CLEAN" ]; then
+  echo "============= 清除构建 ============="
+  rm -rf "${REDROID_DIR}/out"
+fi
 
 # 同步代码
 echo "============= 同步源码 ============="
@@ -55,12 +67,9 @@ docker run -it --privileged --rm --hostname redroid-builder --name redroid-build
 
 # 创建 redroid 镜像
 echo "============= 创建镜像 ============="
-cd ${REDROID_DIR}/out/target/product/redroid_x86_64
-mount system.img system -o ro
-mount vendor.img vendor -o ro
-tar --xattrs -c vendor -C system --exclude="./vendor" . | docker import -c 'ENTRYPOINT ["/init", "androidboot.hardware=redroid"]' - redroid
-umount system vendor
 
+cd ${REDROID_DIR}/out/target/product/redroid_x86_64
+cat redroid.tar | docker import -c 'ENTRYPOINT ["/init", "androidboot.hardware=redroid"]' - redroid
 
 cd ${ROOT_DIR}
 echo "============= 执行完成 ============="
