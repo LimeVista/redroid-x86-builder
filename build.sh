@@ -77,7 +77,7 @@ docker run -it --privileged --rm \
 echo "============= 创建镜像 ============="
 mv -f ${REDROID_DIR}/out/target/product/redroid_x86_64/redroid.tar ${ROOT_DIR}/builder/redroid.tar
 cd ${ROOT_DIR}/builder
-docker build redroid .
+docker build -t redroid .
 
 cd ${ROOT_DIR}
 echo "============= 执行完成 ============="
