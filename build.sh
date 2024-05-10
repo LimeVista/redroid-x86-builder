@@ -69,6 +69,7 @@ docker run -it --privileged --rm \
   -v ${REDROID_DIR}:/src \
   -v ${ROOT_DIR}/vendor/google/proprietary/widevine-prebuilt:/src/vendor/google/proprietary/widevine-prebuilt \
   -v ${ROOT_DIR}/vendor/intel/proprietary/houdini:/src/vendor/intel/proprietary/houdini \
+  -v ${ROOT_DIR}/patches/widevine.mk:/src/vendor/google/proprietary/widevine-prebuilt/widevine.mk \
   redroid-builder
 
 # 创建 redroid 镜像
