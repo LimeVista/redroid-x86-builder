@@ -63,7 +63,13 @@ docker build --build-arg userid=$(id -u) --build-arg groupid=$(id -g) --build-ar
 
 # 执行构建镜像
 echo "============= 开始构建 ============="
-docker run -it --privileged --rm --hostname redroid-builder --name redroid-builder -v ${REDROID_DIR}:/src redroid-builder
+docker run -it --privileged --rm \
+  --hostname redroid-builder \
+  --name redroid-builder \
+  -v ${REDROID_DIR}:/src \
+  -v ${ROOT_DIR}/vendor/google/proprietary/widevine-prebuilt:/src/vendor/google/proprietary/widevine-prebuiltls \
+  -v ${ROOT_DIR}/vendor/intel/proprietary/houdini:/src/vendor/intel/proprietary/houdini \
+  redroid-builder
 
 # 创建 redroid 镜像
 echo "============= 创建镜像 ============="

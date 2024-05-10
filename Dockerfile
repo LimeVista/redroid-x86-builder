@@ -8,10 +8,6 @@ ARG username
 # 复制执行文件
 COPY entry.sh entry.sh
 
-# 增加补丁
-COPY vendor/google/proprietary/widevine-prebuilt /src/vendor/google/proprietary/widevine-prebuilt
-COPY vendor/intel/proprietary/houdini /src/vendor/intel/proprietary/houdini
-
 # 设置环境
 ENV DEBIAN_FRONTEND noninteractive
 
