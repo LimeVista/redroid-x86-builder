@@ -75,9 +75,9 @@ docker run -it --privileged --rm \
 
 # 创建 redroid 镜像
 echo "============= 创建镜像 ============="
-
-cd ${REDROID_DIR}/out/target/product/redroid_x86_64
-cat redroid.tar | docker import -c 'ENTRYPOINT ["/init", "androidboot.hardware=redroid"]' - redroid
+mv -f ${REDROID_DIR}/out/target/product/redroid_x86_64/redroid.tar ${ROOT_DIR}/builder/redroid.tar
+cd ${ROOT_DIR}/builder
+docker build redroid .
 
 cd ${ROOT_DIR}
 echo "============= 执行完成 ============="
