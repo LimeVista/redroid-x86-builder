@@ -67,7 +67,7 @@ docker run -it --privileged --rm \
   --hostname redroid-builder \
   --name redroid-builder \
   -v ${REDROID_DIR}:/src \
-  -v ${ROOT_DIR}/vendor/google/proprietary/widevine-prebuilt:/src/vendor/google/proprietary/widevine-prebuiltls \
+  -v ${ROOT_DIR}/vendor/google/proprietary/widevine-prebuilt:/src/vendor/google/proprietary/widevine-prebuilt \
   -v ${ROOT_DIR}/vendor/intel/proprietary/houdini:/src/vendor/intel/proprietary/houdini \
   redroid-builder
 
