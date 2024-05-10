@@ -29,7 +29,7 @@ sudo tar --xattrs -c vendor -C system --exclude="./vendor" . > redroid.tar
 rm -rf /tmp/libndk
 mkdir -p /tmp/libndk
 tar --xattrs -xf /patches/libndk.tar -C /tmp/libndk
-sudo tar --xattrs -rf redroid.tar /tmp/libndk
+sudo tar --xattrs -rf redroid.tar -C /tmp/libndk .
 
 # 卸载镜像
 sudo umount system vendor
