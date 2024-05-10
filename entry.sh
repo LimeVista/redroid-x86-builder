@@ -24,6 +24,7 @@ sudo mount vendor.img vendor -o ro
 # 打包为 tar 文件
 sudo rm -rf redroid.tar
 sudo tar --xattrs -c vendor -C system --exclude="./vendor" . > redroid.tar
+sudo tar --xattrs -Af redroid.tar /pathches/libndk.tar
 
 # 卸载镜像
 sudo umount system vendor
