@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<manifest>
+    <remote name="LineageOS" fetch="https://github.com/LineageOS/" />
+
+    <remove-project name="platform/external/chromium-webview" />
+    <project path="external/chromium-webview" name="chromium-webview-stub" groups="pdk redroid" remote="redroid" />
+
+    <project path="external/chromium-webview/prebuilt/arm" name="android_external_chromium-webview_prebuilt_arm" groups="pdk lfs" clone-depth="1" revision="bdcd39e172e2768866a81b5b3592729f9b38bb44" remote="LineageOS" />
+    <project path="external/chromium-webview/prebuilt/arm64" name="android_external_chromium-webview_prebuilt_arm64" groups="pdk lfs" clone-depth="1" revision="47c88e5918c4842128faaeaf5f69ea5f91f7a400" remote="LineageOS" />
+    <project path="external/chromium-webview/prebuilt/x86" name="android_external_chromium-webview_prebuilt_x86" groups="pdk lfs" clone-depth="1" revision="2ad8d361e25c5330c43157692b685cf16be0c22f" remote="LineageOS" />
+    <project path="external/chromium-webview/prebuilt/x86_64" name="android_external_chromium-webview_prebuilt_x86_64" groups="pdk lfs" clone-depth="1" revision="e3d143ef18ff918cef229c627b6f0f13b89f75b2" remote="LineageOS" />
+
+</manifest>
